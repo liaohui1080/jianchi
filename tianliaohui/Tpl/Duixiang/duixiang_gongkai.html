@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>个人中心</title>
+<link href="../Public/css/css.css" rel="stylesheet" type="text/css" />
+<link href="../Public/css/duixiang_gongkai.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Public/js/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="../Public/js/js.js"></script>
+
+<!--引用公共弹出层-->
+<include file="tianliaohui/Tpl/Public/public_div.html" />
+</head>
+
+<body>
+
+
+
+<div class="top">
+
+<ul>
+<li><a href="{$gerenzhongxin}">{$user['user_name']}</a></li>
+<li><a href="#">动态32</a></li>
+<li><a href="#">消息32</a></li>
+<li><a href="javascript:void(0);" onclick="tanchuceng('{$duixiang_chuangjian}')">创建对象</a></li>
+<li><a href="#">邀请的朋友</a></li>
+<li><a href="{$tuichu}">退出</a></li>
+
+<dl id="touxiang">
+<dt>{$user['user_name']}</dt>
+<dd>
+	
+
+    <img src="/PUBLIC/image_touxiang/touxiang_60_{$user['user_image']}" />
+	
+</dd>
+</dl>
+</ul>
+</div>
+
+
+
+<div class="h1_mingzi"><h1>{$duixiang_name.bn_neirong}</h1></div>
+
+<div class="gr_zhuti">
+	
+    <!--左边-->
+    <div class="zuo">
+    	
+ 
+ 
+
+ 
+ 
+        
+        <!--对象创建时间-->
+        <div class="chuangjian_time">
+        	<ul>
+            <ol>对象创建时间</ol>
+            <li>{$duixiang_name['duixiang']['dx_time']}</li>
+
+            </ul>
+        </div>
+        
+        
+        <!--申请加入-->
+        <div class="shenqing_jiaru">
+        	
+			
+			
+        	
+        	<ul>
+            <ol>加入对象</ol>
+			<eq name="shenqing.ds_id" value="">
+			<form action="{$duixiang}/duixiang_shenqing_yanzheng">
+            <li>你的名字</li>
+			<li><input  name="ds_name" type="text" value=""/></li>
+		
+			<li>写一个让你通过的理由吧</li>
+			<li><textarea name="ds_liyou"></textarea></li>
+			<li><input  type="submit" value="申请"/>
+			<input  name="dx_id" type="text" value="{$dx_id}"/>
+			<input  name="ds_yaoqingren" type="text" value=""/>
+			<input  name="dx_name" type="text" value="{$duixiang_name.bn_neirong}"/>
+			</li>
+			</form>
+			<else/>
+			
+			<li>你的申请已经发送,请耐心等待审核.</li>
+			<li>申请时间:{$shenqing['ds_time']}</li>
+			</eq>
+            </ul>
+			
+
+			
+			
+        </div>
+        
+        <!--对象使用的标签-->
+        <div class="shiyong_biaoqian">
+
+        	<ul>
+            <ol>使用过的标签</ol>
+			
+			
+			<volist name="rs_biaoqian" id="rs_bq">
+            	<li>{$rs_bq['bq_name']}</li>
+			</volist>
+
+            </ul>
+
+        </div>
+		
+        
+    </div>
+    
+    
+    <!--右边-->
+    <div class="you">
+    	<div  class="biaoti">加入这个对象的人</div>
+        <div  class="daohang">
+        	<div>
+            <a href="#">加入对象({$duixiang_yonghu_count})</a> </div>
+        </div>
+        <div class="neirong">
+        	<volist name="duixiang_yonghu" id="rs_dx_yh">
+        		<ul>
+        			<ol><img src="/PUBLIC/image_touxiang/touxiang_60_{$rs_dx_yh['user_id']['user_image']}"/></ol>
+        			<li>{$rs_dx_yh['user_id']['user_name']}</li>
+					
+        		</ul>
+        		
+        	</volist>
+        	
+		</div>
+        
+        
+    </div>
+
+
+</div>
+</body>
+</html>

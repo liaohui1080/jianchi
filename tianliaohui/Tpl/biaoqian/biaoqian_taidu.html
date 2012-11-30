@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<script>
+
+//关闭标签内容态度的评论显示
+function guanbi_pinglun(id){
+	jQuery(id).hide().text("正在加载...");
+	
+}
+
+//标签内容态度验证
+function ajax_biaoqian_taidu_yanzheng(url,id){
+	var data_input=$(id).serialize();
+	
+
+	$.ajax({
+		url:url,
+		type:'POST',
+		data:data_input,
+		dataType:'json',
+		success:function(msg){
+			
+			switch(msg.zhuangtai) {
+				case 1://操作成功
+					
+					alert(msg.tishi);
+
+					//重新装载,pinglun 标签的内容,这个js函数 在 biaoqian_neirong.html 页面
+					ajax_biaoqian_taidu('{$biaoqian}/biaoqian_taidu/bn_id/{$bn_id}/taidu/{$taidu}','#pinglun_{$bn_id}');
+					break;
+				case 0://操作失败
+					
+					alert(msg.tishi)
+					break;
+			}
+
+			
+		},
+		Error:function(){
+			alert('服务器连接失败');
+		}
+	});
+	
+}
+</script>
+<body>
+	
+
+<form action="javascript:void(0);" onsubmit="ajax_biaoqian_taidu_yanzheng('{$biaoqian}/biaoqian_taidu_yanzheng','#form_biaoqian_taidu_yanzheng_{$bn_id}')" id="form_biaoqian_taidu_yanzheng_{$bn_id}">
+<ul>
+	<li>评论内容---<a href="javascript:void(0);" onclick="guanbi_pinglun('#pinglun_{$bn_id}')">关闭</a></li>
+	<li><textarea name="bt_pinglun" class="bt_pinglun"></textarea>
+	<input type="hidden" value="{$bn_id}" name="bn_id">
+	<input type="hidden" value="{$taidu}" name="bt_taidu">
+	</li>
+	
+	<switch name="taidu">
+		<case value="1">
+			<li><input type="submit" value="认同"></li>
+		</case>
+		<case value="2">
+			<li><input type="submit" value="不认同"></li>
+		</case>
+		<default />
+			<li><input type="submit" value="评论"></li>
+		
+	</switch>
+
+</ul>
+</form>
+---------------------------------------------------------
+<volist name="rs_taidu" id="rs_td">
+
+<ul>
+	<li>{$rs_td.user_name}:{$rs_td.bt_taidu}:{$rs_td.bt_taidu_hanzi}:{$rs_td.bt_pinglun}</li>
+	
+</ul>
+---------------------------------------------------------
+</volist>
+</body>
+</html>

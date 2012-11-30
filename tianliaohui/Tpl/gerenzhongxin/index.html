@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>个人中心</title>
+<link href="../Public/css/css.css" rel="stylesheet" type="text/css" />
+<link href="../Public/css/gerenzhongxin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Public/js/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="../Public/js/js.js"></script>
+
+<!--引用公共弹出层-->
+<include file="tianliaohui/Tpl/Public/public_div.html" />
+</head>
+
+<body>
+
+
+
+
+
+<div class="h1_mingzi"><h1 class="ajax_user_name">{$user['user_name']}</h1></div>
+
+
+<!--主体开始-->
+<div class="gr_zhuti">
+	
+    <!--左边-->
+    <div class="zuo">
+    	<!--创建对象-->
+        <div class="chuangjian_duixiang">
+        	<a href="javascript:void(0);" onclick="tanchuceng('{$duixiang_chuangjian}')">
+				<ul>
+                <ol><b>创建一个新对象</b></ol>
+                <li>这个对象，可以是宇宙里任何存在</li>
+                </ul>            	
+                
+            </a>
+        </div>
+    	
+		<div class="touxiang_da">
+        	<ul>
+            <ol><img src="../PUBLIC/image_touxiang/touxiang_350_{$user['user_image']}" class="file_touxiang_350"/>
+            </ol>
+            <li><a href="javascript:void(0);" onclick="tanchuceng('{$file_touxiang}')">修改头像</a></li>
+            </ul>
+        </div>
+ 
+ 
+
+ 
+ 
+        
+        <!--基本资料-->
+        <div class="jibenziliao">
+        	<ul>
+            <ol>基本资料</ol>
+            <li><b>注册邮箱:</b><span>{$user['user_mail']}</span></li>
+            <li><b>名字:</b><span><span  class="ajax_user_name">{$user['user_name']}</span>&nbsp;<a href="javascript:void(0);" onclick="tanchuceng('{$user_name_xiugai}')">修改</a></span></li>
+            <li><b>邀请状态:</b><span>成功(30)&nbsp;等待(30)&nbsp;<a href="#">查看</a></span></li>
+            <li><b>我的主页:</b><a href="#">查看</a></li>
+            <li><b>退出系统:</b><a href="{$tuichu}">退出</a></li>
+            </ul>
+        </div>
+        
+        
+        <!--安全资料-->
+        <div class="jibenziliao sekuai_jvhuang">
+        	<ul>
+            <ol>安全信息</ol>
+            <li><b>修改密码:</b><a href="#">修改</a></li>
+            <li><b>安全问题:</b><a href="#">设置</a><p class="aaa"></p></li>
+
+            </ul>
+        </div>
+        
+        
+    </div>
+    <!--左边结束-->
+    
+    <!--右边-->
+    <div class="you">
+    	<div  class="biaoti">动态</div>
+        <div  class="daohang">
+        	<div>
+            <a href="#">加入对象(32)</a><a href="#">动态(32)</a><a href="#">消息(32)</a>            </div>
+        </div>
+        <div class="neirong">
+        	
+			
+			<b>已经加入的对象</b>
+        	<volist name="rs_duixiang_jiaru" id="rs_dx_jr">
+        		<ul>
+        		<li><a href="{$duixiang}/index/dx_id/{$rs_dx_jr.dx_id}">{$rs_dx_jr.dx_name}</a>,加入时间:{$rs_dx_jr.dj_time}</li>
+					
+        		</ul>
+        		
+        	</volist>
+        	<p>&nbsp;</p>
+			<b>正在审核的对象</b>
+        	<volist name="rs_duixiang_shenqing" id="rs_dx_sq">
+        		<ul>
+        		<li><a href="{$duixiang}/index/dx_id/{$rs_dx_sq.dx_id}">{$rs_dx_sq.dx_name}</a>,申请时间:{$rs_dx_sq.dj_time}</li>
+					
+        		</ul>
+        		
+        	</volist>
+			
+			
+		</div>
+        
+        
+    </div>
+	<!--右边结束-->
+
+	
+	
+	<!--推荐对象-->
+	<div>
+		<url>
+			<ol>推荐对象</ol>
+			<li><a href="{$duixiang}/duixiang_quanbu">进入所有对象页面</a></li>
+		</url>
+		
+	</div>
+	
+
+</div>
+<!--主体结束-->
+
+</body>
+</html>
