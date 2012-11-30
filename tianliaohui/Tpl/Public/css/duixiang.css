@@ -1,0 +1,73 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+
+
+
+/*对象页面设置*/
+.h1_mingzi{
+	width: 100%;
+	
+}
+.h1_mingzi h1{
+	font-size: 50px;
+	font-weight: bold;
+	color: #000;
+	margin-left: 40px;
+}
+
+.neiye_zhuti{ width:100%; margin-top:40px; font-family:'宋体';}
+.neiye_zuo{width:780px; float:left; background-color:#ffffff;}
+.neiye_you{width:140px; float:left;  margin-left:50px; display:inline;}
+.biaoti{
+	width: 100%;
+	height: 40px;
+	overflow: hidden;
+}
+.zengjia_biaoqian{  height:40px; width:115px; background-color:#F15A24; color:#FFF; line-height:40px; font-size:16px;  padding-left:45px; float:left; display:inline;}
+.zengjia_duixiang{ height:40px; width:125px; background-color:#2E3192; color:#FFF; line-height:40px; font-size:16px;  float:left; display:inline; margin-left:10px; text-align:center;}
+.zengjia_dongtai{ height:40px; width:475px; background-color:#09F; color:#FFF; line-height:40px; font-size:14px;  float:left; display:inline; margin-left:10px; text-align:right;}
+
+.biaoqian{ width:375px; height:1000px;  float:left;  font-size:14px;}
+.dongtai{
+	width: 380px;
+	height: 1000px;
+	background-color: #F2F2F2;
+	float: left;
+	border-left-width: 5px;
+	border-left-style: solid;
+	border-left-color: #c0c0c0;
+	padding:10px;
+	font-size:12px;
+}
+
+
+.biaoqian_neirong{ width:auto;   background-color:#F2F2F2; float:left; padding-left:48px; padding-right:10px; margin-top:20px; margin-right:20px;}
+.biaoqian_neirong span{ line-height:20px;}
+
+.biaoqian_neirong1{float:left;width:auto; padding-top:5px; padding-bottom:5px;}
+
+.baifenbi{color:#F60;font-size:12px; }
+
+/*
+鼠标移上去变色的
+*/
+.biaoqian_neirong_bianse{ background-color:#09F;width:auto; margin-right:0px; color:#ffffff; cursor:pointer; float:left; margin-right:20px;}
+
+/*
+选中变色
+*/
+.biaoqian_neirong_xuanzhong{ background-color:#09F;width:317px; margin-right:0px; color:#ffffff; cursor:pointer; float:left; }
+.dongtai_bianse{
+	width: 380px;
+	height: 1000px;
+	background-color: #F2F2F2;
+	float: left;
+	border-left-width: 5px;
+	border-left-style: solid;
+	border-left-color: #09F;
+	padding:10px;
+	font-size:12px;
+}
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="../Public/css/css.css" rel="stylesheet" type="text/css" />
+<link href="../Public/css/duixiang.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Public/js/jquery-1.8.2.js"></script>
+
+
+<script>
+
+</script>
+
+
+
+</head>
+
+<body>
+
+
+<div>
+<eq name="shenhe" value="yes">
+	
+	<h2>你真的愿意他加入吗?</h2>
+	<hr />
+	<ul>
+		<li><a href="{$duixiang}/shenhe_yanzheng/ds_id/{$ds_id}/shenhe/yes">确认</a></li>
+		<li><a href="{$duixiang}/shenhe_yanzheng/ds_id/{$ds_id}">返回</a></li>
+	</ul>
+
+<else/>	
+	
+	<h2>给他一个你拒绝的理由吧</h2>
+	<hr />
+	<ul>
+		<form action="">
+		<ol><textarea name=""></textarea></ol>
+		<li><a href="{$duixiang}/shenhe_yanzheng/ds_id/{$ds_id}/shenhe/no">确认</a></li>
+		<li><a href="{$duixiang}/shenhe_yanzheng/ds_id/{$ds_id}">返回</a></li>
+		</form>
+	</ul>
+		
+	
+</eq>
+</div>
+</body>
+</html>

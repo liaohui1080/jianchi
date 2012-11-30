@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script>
+
+//增加新标签 ajax
+function ajax_zengjia_biaoqian(url,id){
+	var data_input=$(id).serialize();
+
+	$.ajax({
+		url:url,
+		type:'POST',
+		data:data_input,
+		dataType:'json',
+		success:function(msg){
+			
+			switch(msg.zhuangtai) {
+				case 1://操作成功
+					alert(msg.tishi);
+					//调用函数,重新装载 弹出层的内容,主要是,更新 对象的标签列表,显示没事使用的标签
+					tanchuceng('{$biaoqian}/index/dx_id/{$dx_id}');
+					break;
+				case 0://操作失败
+					alert(msg.tishi)
+					break;
+			}
+
+			
+		},
+		Error:function(){
+			alert('服务器连接失败');
+		}
+	});
+	
+}
+	
+	
+</script>
+
+</head>
+<body>
+<h2>选择已存在的标签</h2>
+<ul>
+<volist name="rs_biaoqian" id="rs_bq">
+	
+	<li><a href="javascript:void(0);" onclick="tanchuceng('{$biaoqian}/xinzeng_neirong/bq_id/{$rs_bq.bq_id}/dx_id/{$dx_id}')">{$rs_bq['bq_paixu']}--->{$rs_bq['bq_name']}{$rs_bq.paixu}</a></li>
+</volist>
+</ul>
+
+
+<form action="javascript:void(0);" method="post"  id="form_zengjia_biaoqian">
+	
+<h2>制造一个新的标签</h2>
+<ul>
+	<li>标签名字:<input type="text" value="" name="bq_name"/></li>
+	<li>标签属性:
+		<select name="bs_id">
+		<option value ="" >选择</option>
+		<volist name="rs_shuxing" id="rs_sx">
+		<option value ="{$rs_sx['bs_id']}" >{$rs_sx['bs_name']}</option>
+		</volist>
+		</select>
+	</li>
+	<li><input type="submit" value="增加" onclick="ajax_zengjia_biaoqian('{$biaoqian}/xinzeng_biaoqian_yanzheng','#form_zengjia_biaoqian')"/></li>
+</ul>	
+	
+</form>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="../Public/css/css.css" rel="stylesheet" type="text/css" />
+<link href="../Public/css/duixiang.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Public/js/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="../Public/js/date.js"></script>
+<script type="text/javascript" src="../Public/js/js.js"></script>
+<script>
+
+jQuery(document).ready(function(){
+	
+	//鼠标移入标签 元素 变色
+	jQuery(".biaoqian_neirong").hover(
+		function(){
+			jQuery(this).addClass("biaoqian_neirong_bianse");
+	
+		},
+		function(){
+			jQuery(this).removeClass("biaoqian_neirong_bianse");
+		}
+	);
+	
+	
+	
+	//鼠标选中标签 ,变色
+	jQuery(".biaoqian_neirong").click(function(){
+		//鼠标选中的元素变色
+		jQuery(this).addClass("biaoqian_neirong_xuanzhong");
+		jQuery(".dongtai").addClass("dongtai_bianse");
+		jQuery(".dongtai").text("正在载入...");
+		
+		//鼠标没有选中的同辈元素,都不变色,, 用 siblings 实现
+		jQuery(this).siblings().removeClass("biaoqian_neirong_xuanzhong");
+		
+		
+	});
+	
+});
+
+//获取,当前标签下 所有本标签的内容,当时是在同一个对象下
+function ajax_biaoqian_neirong(url){
+
+		$.ajax({
+		url:url,
+		dataType:'html',
+		success:function(msg){
+						
+			//把ajax获取的内容,装载进入 dongtai 标签
+			$(".dongtai").html(msg);
+					
+		},
+		error:function(msg){
+			alert("弹出连接服务器失败");
+		}
+		
+		});
+	
+}
+	
+</script>
+
+
+<include file="tianliaohui/Tpl/Public/public_div.html" />
+</head>
+
+<body>
+
+
+
+<div class="top">
+
+<ul>
+<li><a href="{$gerenzhongxin}">{$user['user_name']}</a></li>
+<li><a href="#">动态32</a></li>
+<li><a href="#">消息32</a></li>
+<li><a href="javascript:void(0);" onclick="tanchuceng('{$duixiang_chuangjian}')">创建对象</a></li>
+<li><a href="#">邀请的朋友</a></li>
+<li><a href="{$tuichu}">退出</a></li>
+
+<dl id="touxiang">
+<dt>{$user['user_name']}</dt>
+<dd>
+	
+	
+    <img src="/PUBLIC/image_touxiang/touxiang_60_{$user['user_image']}" />
+
+
+</dd>
+</dl>
+</ul>
+
+
+
+</div>
+
+<div class="h1_mingzi"><h1>{$duixiang_name.bn_neirong}</h1></div>
+<div class="neiye_zhuti">
+    <div class="neiye_zuo">
+        <div class="biaoti">
+       	  <a href="javascript:void(0);" onclick="tanchuceng('{$biaoqian}/index/dx_id/{$dx_id}')">
+       	  <div class="zengjia_biaoqian">+增加新标签</div>
+		  </a>
+		  
+          <a href="javascript:void(0);" onclick="tanchuceng('{$duixiang_chuangjian}')">
+          <div class="zengjia_duixiang">*创建新对象</div>
+		  </a>
+		  
+            <div class="zengjia_dongtai">近期动态&nbsp;&nbsp;<a href="#">刷新</a>&nbsp;&nbsp;</div>
+        </div>
+    	<div class="biaoqian">
+    		
+		
+		<volist name="rs_biaoqian" id="rs_bq">
+	        <div class="biaoqian_neirong"  id="biaoqian_neirong_{$rs_bq.bn_id}" onclick="ajax_biaoqian_neirong('{$biaoqian}/biaoqian_neirong/bq_id/{$rs_bq.bq_id}/dx_id/{$rs_bq.dx_id}')">
+	        	<div class="biaoqian_neirong1">
+	            <span style=" color:#000080;">{$rs_bq.bq_paixu}{$rs_bq.bq_name}：</span> <span>{$rs_bq.bn_neirong} <span class="baifenbi">16%可能</span></span>
+	            
+	            </div>
+	
+	        </div>
+        </volist>
+		
+		
+		
+		
+      
+
+<!--
+        <div class="biaoqian_neirong">
+        	<div class="biaoqian_neirong1">
+            <span style=" color:#000;">姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名：</span>
+            <span style=" color:#999;">沈佳怡沈佳怡沈佳怡沈佳怡沈佳怡沈佳怡沈佳怡沈佳怡沈佳怡沈佳怡沈佳怡    <span class="baifenbi">16%可能</span></span> 
+			<div style="width:200px; height:200px; background-color:#CCC; float:left;">
+			<img src="../Public/images/touxiang.png" width="200" />
+			</div>
+			
+			</div>
+  
+        </div>
+ -->       
+
+
+        </div>
+        <div class="dongtai">右边显示的所有标签</div>
+    </div>
+	
+	<!--右边-->
+    <div class="neiye_you">
+    	<div>退出此对象</div>
+		
+		<div>
+			<div><a href='{$yaoqing}/dx_id/{$dx_id}'>邀请朋友</a></div>
+			<div><a href="{$duixiang}/shenhe/dx_id/{$dx_id}">{$count}个新人等待你的审核通过</a></div>
+		</div>
+		
+		<div>
+			<volist name="duixiang_yonghu" id="rs_dx_yh">
+        		<ul>
+        			<ol><img src="/PUBLIC/image_touxiang/touxiang_60_{$rs_dx_yh['user_id']['user_image']}"/></ol>
+        			<li>{$rs_dx_yh['user_id']['user_name']}</li>
+					
+        		</ul>
+        		
+        	</volist>
+			
+			
+		</div>
+		
+		
+
+	</div>
+</div>
+
+</body>
+</html>

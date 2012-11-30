@@ -1,0 +1,67 @@
+@charset "utf-8";
+/* CSS Document */
+h1 , h2, h3, ul, li, ol, dl, dt, dd, p, form, body{
+	padding: 0px;
+	margin: 0px;
+	list-style-type: none;
+
+}
+h1 , h2, h3{ font-weight:normal;}
+body{ font-family:'微软雅黑','宋体';};
+a{color: #0071BC; }
+
+a:link {
+	color: #0071BC;
+	text-decoration: none;
+}
+a:visited {
+	color: #0071BC;
+	text-decoration: none;
+}
+a:hover {
+	color: #FFF;
+	background-color:#06C;
+	text-decoration: none;
+}
+a:active {
+	color: #FFF;
+	text-decoration: none;
+}
+
+
+/*
+头部公用css
+*/
+.top{ width:100%; height:80px;  font-family:'宋体';}
+.top div{}
+.top ul{
+	height: 23px;
+	width: 100%;
+	background-color: #000000;
+	
+}
+.top ul li{ height:23px; width:auto; float:left; margin-left:10px; display:inline;font-size:14px; line-height:23px;}
+.top ul li a{ color:#ffffff; height:23px; display:block; padding-left:5px; padding-right:5px;}
+.top ul li a:hover {color: #FFF;text-decoration: none;}
+
+
+#touxiang{
+	height: 60px;
+	width: auto;
+	display: inline;
+	float: right;
+	margin-top: 5px;
+	margin-right: 20px;
+}
+#touxiang dt{width:auto; float:left; height:60px; line-height:90px; margin-right:10px;}
+#touxiang dd{
+	width: 60px;
+	height: 60px;
+	background-color: #CCC;
+	padding:3px;
+	float: left;
+	
+}
+
+
+
